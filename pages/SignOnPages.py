@@ -18,28 +18,3 @@ class SignOnPage(basePages.BasePage):
         elemSubmit=self.driver.find_element(*SignOn.elemSubmit)
         self.mouse_click(elemSubmit)
         #elemSubmit.click()
-
-    def findFlight(self):
-        elemSaveInfo=self.driver.find_element(*SignOn.elemFindFlight)
-        self.mouse_click(elemSaveInfo)
-
-    def saveFlight(self):
-        elemSaveFlight=self.driver.find_element(*SignOn.elemSaveFlight)
-        self.mouse_click(elemSaveFlight)
-
-    def fillPersonalInfo(self,firstname,lastname,number):
-        # First name
-        elemFirstName=self.driver.find_element(*SignOn.elemFirstName)
-        elemFirstName.send_keys(firstname)
-
-        # Last name
-        elemLastName=self.driver.find_element(*SignOn.elemLastName)
-        elemLastName.send_keys(lastname)
-
-        # Credit card number
-        elemNumber=self.driver.find_element(*SignOn.elemNumber)
-        elemNumber.send_keys(number)
-
-    def buyFlight(self):
-        elemBuyFlight=self.driver.find_element(*SignOn.elemBuyFlight)
-        self.mouse_click(elemBuyFlight)

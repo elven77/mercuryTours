@@ -2,7 +2,13 @@ import time
 import string
 
 import baseTest
-from pages.SignOnPages import SignOnPage
+from locators.locators import BookFlight
+from pages import logoutPages
+from pages.bookFlightPages import BookFlightPages
+from pages.fillFlightInfo import FillFlightInfo
+from pages.selectFlightPages import SelectFlight
+from pages.signOnPages import SignOnPage
+from pages.logoutPages import LogOutPage
 
 
 class SignOn(baseTest.BaseTest):
@@ -12,6 +18,9 @@ class SignOn(baseTest.BaseTest):
     def test_signon(self):
         print(time.strftime("Start: "+'%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
         signOnPage=SignOnPage(self.driver)
+        fillFlightInfo=FillFlightInfo(self.driver)
+        selectFlight=SelectFlight(self.driver)
+        bookFlight=BookFlightPages(self.driver)
         #SignOnbPage=SignOnPage(self.driver)
 
         # Enter Sign On
@@ -23,14 +32,27 @@ class SignOn(baseTest.BaseTest):
         # Submit
         signOnPage.submit()
 
-        # Find Flight
-        signOnPage.findFlight()
+        # Find Flight & Confirm
+        fillFlightInfo.choosePersonNum('2')
+        fillFlightInfo.chooseDepartCity('Sydney')
+        fillFlightInfo.chooseDepartDate('January','7')
+        fillFlightInfo.chooseDestination('Paris')
+        fillFlightInfo.chooseReturnDate('May','26')
+        fillFlightInfo.chooseBusinessClass()
+        fillFlightInfo.chooseAirline('Unified Airlines')
+        fillFlightInfo.findFlight()
 
         # Save Flight
-        signOnPage.saveFlight()
+        selectFlight.departFlight()
+        selectFlight.returnFlight()
+        selectFlight.saveFlight()
 
-        # Fill personal info
-        signOnPage.fillPersonalInfo("aaa","aaa","12345678")
+        # Book a flight
+        bookFlight.fillPersonalInfo("aaa","aaa","12345678")
+        bookFlight.purchase()
 
-        # Buy flight
-        signOnPage.buyFlight()
+        """
+        # Logout
+        logout=LogOutPage(self.driver)
+        logout.logOut()
+        """
