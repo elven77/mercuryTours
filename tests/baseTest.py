@@ -1,6 +1,6 @@
 import unittest
 from selenium import webdriver
-from urls.urls import ToursUrl
+from testData.urls import ToursUrl
 
 
 class BaseTest(unittest.TestCase):

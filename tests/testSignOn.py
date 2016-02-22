@@ -9,6 +9,7 @@ from pages.fillFlightInfo import FillFlightInfo
 from pages.selectFlightPages import SelectFlight
 from pages.signOnPages import SignOnPage
 from pages.logoutPages import LogOutPage
+from testData.passengersInfo import PassengersInfo
 
 
 class SignOn(baseTest.BaseTest):
@@ -44,11 +45,11 @@ class SignOn(baseTest.BaseTest):
 
         # Save Flight
         selectFlight.departFlight()
-        selectFlight.returnFlight()
+        selectFlight.returnFlight("14:30")
         selectFlight.saveFlight()
 
         # Book a flight
-        bookFlight.fillPersonalInfo("aaa","aaa","12345678")
+        bookFlight.fillPersonalInfo(PassengersInfo.passenger_info,"12345678")
         bookFlight.purchase()
 
         """

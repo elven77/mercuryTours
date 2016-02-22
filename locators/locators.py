@@ -48,8 +48,8 @@ class ChooseFlight(baseLocators):
 
 class BookFlight(baseLocators):
     elemTicketlessTravel=(By.XPATH,"//input[@name='ticketLess']")
-    elemFirstName=(By.XPATH,"//input[@name='passFirst0']")
-    elemLastName=(By.XPATH,"//input[@name='passLast0']")
+    #elemFirstName=(By.XPATH,"//input[@name='passFirst0']")
+    #elemLastName=(By.XPATH,"//input[@name='passLast0']")
     elemNumber=(By.XPATH,"//input[@name='creditnumber']")
     elemBuyFlight=(By.XPATH,"//input[@name='buyFlights']")
 
